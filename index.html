@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>WEBT HS21 MEP Abschlussprojekt</title>
+</head>
+<body class="w3-container">
+    <header>
+        <nav class="w3-bar">
+            <a href="#information" class="w3-bar-item w3-button w3-mobile">Information</a>
+            <a href="#formular" class="w3-bar-item w3-button w3-mobile">Formular</a>
+            <a href="#canvas" class="w3-bar-item w3-button w3-mobile">Canvas</a>
+        </nav>
+    </header>
+    <section>
+        <article id="information">
+            <h2>Einführung</h2>
+            <p>Hier die Applikation erklären und Informationen darüber schreiben.</p>
+            <img src="img/screenshot.png" alt="Screenshot von ausgefülltem Formular"/>
+        </article>
+        <article id="formular">
+            <h2>Pilz erfassen</h2>
+            <form action="mushrooms.php" method="POST" class="w3-container">
+                <fieldset>
+                    <legend>
+                        <strong>Pilz</strong>
+                    </legend>
+                    <label for="name">Pilzname</label>
+                    <input type="text" id="name" name="name" class="w3-input"/>
+                    <label for="height">Höhe (cm)</label>
+                    <input type="number" id="height" name="height" class="w3-input" min="0" max="100"/>
+                    <label for="color">Farbe</label>
+                    <select id="color" name="color" class="w3-input">
+                        <option value="lightgray" label="Hellgrau"></option>
+                        <option value="rosybrown" label="Rosenbraun"></option>
+                        <option value="saddlebrown" label="Hellbraun"></option>
+                        <option value="red" label="Rot"></option>
+                        <option value="yellow" label="Gelb"></option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <button type="submit">Pilz erfassen</button>
+                </fieldset>
+            </form>
+        </article>
+        <article id="canvas">
+            <h2>Canvas um Pilz zu zeichnen</h2>
+            <!-- https://stackoverflow.com/questions/34772957/how-to-make-canvas-responsive -->
+            <canvas id="mushroom-canvas" height="800" width="1000"></canvas>
+        </article>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
