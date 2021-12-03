@@ -35,37 +35,21 @@ function drawMushroom() {
     ctx.fill();
 
     // Dots
-    // This should be done with a loop, but to ensure that I'm explicitly calling 10 drawing methods, it's unwrapped.
     ctx.fillStyle = '#ece3e3';
-    ctx.beginPath();
-    ctx.arc(canvasCenter + hatRadius * 0.05, stemTop - hatRadius * 0.65, hatRadius / 10, 0, 2 * Math.PI);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
+    // Stroke style from before
+    function drawDot(x, y) {
+        ctx.beginPath();
+        ctx.arc(x, y, hatRadius / 10, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
 
-    ctx.beginPath();
-    ctx.arc(canvasCenter + hatRadius * 0.45, stemTop - hatRadius * 0.25, hatRadius / 10, 0, 2 * Math.PI);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(canvasCenter - hatRadius * 0.1, stemTop - hatRadius * 0.05, hatRadius / 10, 0, 2 * Math.PI);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(canvasCenter - hatRadius * 0.4, stemTop - hatRadius * 0.5, hatRadius / 10, 0, 2 * Math.PI);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(canvasCenter - hatRadius * 0.6, stemTop + hatRadius * 0.05, hatRadius / 10, 0, 2 * Math.PI);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
+    drawDot(canvasCenter + hatRadius * 0.05, stemTop - hatRadius * 0.65);
+    drawDot(canvasCenter + hatRadius * 0.45, stemTop - hatRadius * 0.25);
+    drawDot(canvasCenter - hatRadius * 0.1, stemTop - hatRadius * 0.05);
+    drawDot(canvasCenter - hatRadius * 0.4, stemTop - hatRadius * 0.5);
+    drawDot(canvasCenter - hatRadius * 0.6, stemTop + hatRadius * 0.05);
 }
 
 const knownMushrooms = {
