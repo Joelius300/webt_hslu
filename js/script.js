@@ -65,3 +65,41 @@ function drawMushroom() {
 }
 
 drawMushroom();
+
+
+const knownMushrooms = {
+    steinpilz: {
+        color: 'Hellbraun',
+    },
+    fliegenpilz: {
+        color: 'Rot'
+    },
+};
+
+function validateKnownMushrooms() {
+    const name = document.getElementById('name').value;
+    const mushroom = knownMushrooms[name.toLowerCase()];
+    if (!name || !mushroom)
+        return;
+
+    const select = document.getElementById('color');
+    const color = select.options[select.selectedIndex].label;
+
+    if (color !== mushroom.color) {
+        const errorLabel = document.getElementById('colorErrorLabel');
+        errorLabel.innerText = `Dies ist ein bekannter Pilz und hat die Farbe ${mushroom.color}, nicht ${color}.`;
+        errorLabel.removeAttribute('hidden');
+        const handler = () =>
+        {
+            if (select.options[select.selectedIndex].label === mushroom.color) {
+                errorLabel.setAttribute('hidden', '');
+                select.removeEventListener('input', handler);
+            }
+        }
+        select.addEventListener('input', handler);
+
+        return false;
+    }
+
+    return true;
+}
