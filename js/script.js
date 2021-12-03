@@ -1,71 +1,72 @@
-// Failed stuff with OpenAI sadge
-var canvas = document.getElementById('mushroom-canvas');
-var ctx = canvas.getContext('2d');
-var diameter = 200;
-var mushroom = {
-    // Mushroom properties
-    radius: diameter / 2,
-    height: (diameter - 100) / 2,
-    center: {x: 400, y: 500},
-    // Color
-    color: {r: 0.4, g: 0.4, b: 0.4},
-    // Fungus (mushroom cap) properties
-    // Position of center of cap relative to mushroom center
-    capPosition: {x: diameter - 25, y: diameter - 25},
-    // Cap properties
-    capRadius: 25,
-    capHeight: 25,
-    capColor: {r: 0.3, g: 0.8, b: 0.3},
-};
-
-// function draw() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     // Draw the center of the mushroom
-//     ctx.beginPath();
-//     ctx.arc(mushroom.center.x, mushroom.center.y, mushroom.radius, 0, Math.PI * 2);
-//     ctx.stroke();
-//     // Draw the fungus cap
-//     // ctx.beginPath();
-//     // ctx.arc(mushroom.center.x, mushroom.center.y, mushroom.capPosition.x, mushroom.capPosition.y, 0, 2 * Math.PI);
-//     // ctx.fillStyle = mushroom.capColor;
-//     // ctx.strokeStyle = mushroom.capColor;
-//     // ctx.fill();
-//     // ctx.stroke();
-// }
-
 function drawMushroom() {
-    var radius = mushroom.radius;
-    var capColor = mushroom.capColor;
+    const canvas = document.getElementById('mushroom-canvas');
+    const ctx = canvas.getContext('2d');
 
-// Calculate x and y coordinates of the center of the cap
-    var capX = mushroom.center.x - radius;
-    var capY = mushroom.center.y - radius;
+    const canvasCenter = canvas.width / 2;
 
-// Calculate radius of cap
-    var capRadius = (mushroom.capPosition.x - mushroom.center.x) * 2 +
-        (mushroom.capPosition.y - mushroom.center.y) * 2;
+    const hatRadius = canvas.height * 0.35;
+    const stemWidth = canvas.height * 0.2;
+    const stemHeight = canvas.height * 0.55;
+    const stemTop = canvas.height * 0.95 - stemHeight;
 
-// // Set black color and fill the canvas with it
-//     ctx.fillStyle = 'black';
-//     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Stem
+    ctx.fillStyle = '#f7deb4';
+    ctx.strokeStyle = '#d2b385';
+    ctx.fillRect(canvasCenter - stemWidth / 2, stemTop, stemWidth, stemHeight);
+    ctx.strokeRect(canvasCenter - stemWidth / 2, stemTop, stemWidth, stemHeight);
 
-// Draw the cap
-    ctx.fillStyle = capColor.r;
-    ctx.fillRect(capX, capY, capRadius, mushroom.capHeight);
+    // White stuff around top of stem
+    ctx.beginPath();
+    ctx.moveTo(canvasCenter - stemWidth / 2, stemTop);
+    ctx.lineTo(canvasCenter - stemWidth / 2 - stemWidth / 5, stemTop + stemHeight / 3);
+    ctx.lineTo(canvasCenter + stemWidth / 2 + stemWidth / 5, stemTop + stemHeight / 3);
+    ctx.lineTo(canvasCenter + stemWidth / 2, stemTop);
+    ctx.closePath();
+    ctx.strokeStyle = '#c4c4c4';
+    ctx.fillStyle = '#ece3e3';
+    ctx.fill();
+    ctx.stroke();
 
-// Draw the stem
-    ctx.fillStyle = capColor.g;
-    ctx.fillRect(mushroom.center.x, mushroom.center.y, diameter,
-        diameter);
+    // Hat
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(canvasCenter, stemTop, hatRadius, Math.PI - Math.PI / 8, Math.PI / 8, false);
+    ctx.closePath();
+    ctx.fill();
 
-// Draw the mushroom
-    ctx.fillStyle = capColor.b;
-    ctx.fillRect(mushroom.center.x, mushroom.center.y, diameter,
-        diameter);
+    // Dots
+    // This should be done with a loop, but to ensure that I'm explicitly calling 10 drawing methods, it's unwrapped.
+    ctx.fillStyle = '#ece3e3';
+    ctx.beginPath();
+    ctx.arc(canvasCenter + hatRadius * 0.05, stemTop - hatRadius * 0.65, hatRadius / 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(canvasCenter + hatRadius * 0.45, stemTop - hatRadius * 0.25, hatRadius / 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(canvasCenter - hatRadius * 0.1, stemTop - hatRadius * 0.05, hatRadius / 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(canvasCenter - hatRadius * 0.4, stemTop - hatRadius * 0.5, hatRadius / 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(canvasCenter - hatRadius * 0.6, stemTop + hatRadius * 0.05, hatRadius / 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
 }
-
-drawMushroom();
-
 
 const knownMushrooms = {
     steinpilz: {
@@ -103,3 +104,5 @@ function validateKnownMushrooms() {
 
     return true;
 }
+
+drawMushroom();
