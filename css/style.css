@@ -1,7 +1,19 @@
+/* red line under invalid input, works fine with w3.css */
 input:invalid {
     border-color: red;
 }
 
+#submit_button {
+    width: 50%;
+    transition-property: width;
+    transition-duration: .3s;
+}
+
+#submit_button:hover {
+    width: 100%;
+}
+
+/* canvas-aligner and canvas rules are for centering the canvas horizontally */
 #canvas-aligner {
     width: 100%;
     text-align: center;
@@ -9,4 +21,13 @@ input:invalid {
 
 canvas {
     display: inline;
+}
+
+#content {
+    /* center the section manually because w3-center centers all children and w3-display-container
+     * uses absolute positioning and overlaps with the nav bar unfortunately. */
+    margin: auto;
+    /* I really didn't want to use this but w3-clear didn't work and neither did putting it inside a
+     * w3-container as suggested on this page: https://www.w3schools.com/w3css/w3css_display.asp */
+    float: none !important;
 }

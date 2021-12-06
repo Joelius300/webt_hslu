@@ -9,14 +9,14 @@
     <title>WEBT HS21 MEP Abschlussprojekt</title>
 </head>
 <body class="w3-container">
-    <header>
+    <header class="w3-container w3-center">
         <nav class="w3-bar">
             <a href="#information" class="w3-bar-item w3-button w3-mobile">Information</a>
             <a href="#formular" class="w3-bar-item w3-button w3-mobile">Formular</a>
             <a href="#canvas" class="w3-bar-item w3-button w3-mobile">Canvas</a>
         </nav>
     </header>
-    <section>
+    <section id="content" class="w3-col l6 m10 s12">
         <article id="information">
             <h2>Einführung</h2>
             <p>Hier die Applikation erklären und Informationen darüber schreiben.</p>
@@ -43,8 +43,8 @@
                     </select>
                     <label for="color" id="colorErrorLabel" hidden></label>
                 </fieldset>
-                <fieldset>
-                    <button type="submit">Pilz erfassen</button>
+                <fieldset class="w3-center">
+                    <button id="submit_button" type="submit">Pilz erfassen</button>
                 </fieldset>
             </form>
         </article>
