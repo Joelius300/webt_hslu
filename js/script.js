@@ -68,7 +68,7 @@ function validateKnownMushrooms() {
         return;
 
     const select = document.getElementById('color');
-    const color = select.options[select.selectedIndex].label;
+    const color = select.value;
 
     if (color !== mushroom.color) {
         const errorLabel = document.getElementById('colorErrorLabel');

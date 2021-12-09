@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>WEBT HS21 MEP Abschlussprojekt</title>
 </head>
-<body class="w3-container">
+<body>
     <header class="w3-container w3-center">
         <nav class="w3-bar">
             <a href="#information" class="w3-bar-item w3-button w3-mobile">Information</a>
@@ -16,30 +16,30 @@
             <a href="#canvas" class="w3-bar-item w3-button w3-mobile">Canvas</a>
         </nav>
     </header>
-    <section id="content" class="w3-col l6 m10 s12">
+    <section id="content" class="w3-content w3-container">
         <article id="information">
-            <h2>Einführung</h2>
+            <h2>Information</h2>
             <p>Hier die Applikation erklären und Informationen darüber schreiben.</p>
             <img src="img/screenshot.png" alt="Screenshot von ausgefülltem Formular"/>
         </article>
         <article id="formular">
-            <h2>Pilz erfassen</h2>
+            <h2>Formular</h2>
             <form action="mushrooms.php" method="POST" class="w3-container" onsubmit="return validateKnownMushrooms();">
                 <fieldset>
                     <legend>
                         <strong>Pilz</strong>
                     </legend>
                     <label for="name">Pilzname</label>
-                    <input type="text" id="name" name="name" class="w3-input" required />
+                    <input type="text" id="name" name="name" class="w3-input" maxlength="100" required />
                     <label for="height">Höhe (cm)</label>
                     <input type="number" id="height" name="height" class="w3-input" min="0" max="100" required />
                     <label for="color">Farbe</label>
                     <select id="color" name="color" class="w3-input" required>
-                        <option value="saddlebrown" label="Hellbraun" selected></option>
-                        <option value="lightgray" label="Hellgrau"></option>
-                        <option value="rosybrown" label="Rosenbraun"></option>
-                        <option value="red" label="Rot"></option>
-                        <option value="yellow" label="Gelb"></option>
+                        <option value="Hellbraun" label="Hellbraun" selected></option>
+                        <option value="Hellgrau" label="Hellgrau"></option>
+                        <option value="Rosenbraun" label="Rosenbraun"></option>
+                        <option value="Rot" label="Rot"></option>
+                        <option value="Gelb" label="Gelb"></option>
                     </select>
                     <label for="color" id="colorErrorLabel" hidden></label>
                 </fieldset>
@@ -49,7 +49,7 @@
             </form>
         </article>
         <article id="canvas">
-            <h2>Canvas um Pilz zu zeichnen</h2>
+            <h2>Canvas</h2>
             <!-- It's hard to make this responsive and good-looking, so I'll center it. -->
             <div id="canvas-aligner">
                 <canvas id="mushroom-canvas" height="400" width="300"></canvas>
