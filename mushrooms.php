@@ -1,5 +1,5 @@
 <?php
-const VALID_COLORS = ['saddlebrown' => 'Hellbraun', 'lightgray' => 'Hellgrau', 'rosybrown' => 'Rosenbraun', 'red' => 'Rot', 'yellow' => 'Gelb'];
+const VALID_COLORS = ['Hellbraun', 'Hellgrau', 'Rosenbraun', 'Rot', 'Gelb'];
 
 // Freitext
 // empty($var) is equivalent to !isset($var) || $var == false, according to php documentation
@@ -15,7 +15,7 @@ if (!isset($_POST['height']) || !is_numeric($_POST['height']) || (int)$_POST['he
 }
 
 // Diskreter Wert
-if (empty($_POST['color']) || !in_array($_POST['color'], array_keys(VALID_COLORS), true)) {
+if (empty($_POST['color']) || !in_array($_POST['color'], VALID_COLORS, true)) {
     echo 'Es muss eine der angezeigten Farben ausgewählt werden.';
     return;
 }
@@ -35,7 +35,6 @@ function printMushroom($name, $height, $colorGerman) {
 $name = $_POST['name'];
 $height = $_POST['height'];
 $color = $_POST['color'];
-$colorGerman = VALID_COLORS[$color];
 
 $conn = mysqli_connect('127.0.0.1', 'root', '', 'mushrooms');
 if (!$conn) {
@@ -70,7 +69,7 @@ setcookie(COOKIE_KEY, implode(',', $userMushroomIds), MAX_COOKIE_TIME); // write
 
 <div>
     <h2>Pilz hinzugefügt</h2>
-    <?php printMushroom($name, $height, $colorGerman); ?>
+    <?php printMushroom($name, $height, $color); ?>
 </div>
 <a href="index.html">Zurück zum Hauptseite</a>
 <div>
@@ -90,7 +89,7 @@ $res = mysqli_stmt_get_result($select);
 if ($res) {
     // display all mushrooms that were stored in the users cookie including the newly added one.
     while($row = mysqli_fetch_assoc($res)) {
-        printMushroom($row['name'], $row['height'], VALID_COLORS[$row['color']]);
+        printMushroom($row['name'], $row['height'], $row['color']);
     }
 } else {
     echo '<p>Gespeicherte Pilze konnten nicht aus der Datenbank geladen werden.</p>';
