@@ -1,8 +1,0 @@
-Reicht ein w3-content über alles als responsives Layout für Mobile und Desktop beim Informations- und Formular-Bereich?
-Das setzt eine Max width und sieht somit bei Desktop anders aus als auf Mobile.
-In den Anforderungen steht "Das Layout muss für die zwei Geräteklassen Mobile und Desktop jeweils unterschiedliche und für die entsprechende Geräteklasse geeignete Darstellungen verwenden."
-Da ich gerne die Webseite zentriert hätte, habe ich mit verschiedenen Mitteln von W3.css versucht das zu machen aber keine der Klassen, die ich gefunden habe, funktionieren
-zusammen mit den konditionellen Grössen wie l8 m10 s12. Ich habe versucht: w3-center (zentriert alles), w3-display-topmiddle (macht absolutes positioning und würde deshalb ein div um den Inhalt benötigen, was aber semantisch kein passendes HTML Element wäre), w3-content (geht nicht mit den konditionellen Grössen).
-
-
-Muss die Client-seitige Validierung auch auf dem Server gemacht werden, wenn sie keinen Einfluss auf die Sicherheit hat? Es steht nur, dass die Parameter auf "Existenz und sinnvollen Inhalt" geprüft werden sollen.
