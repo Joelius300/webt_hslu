@@ -13,12 +13,21 @@ input:invalid {
     width: 100%;
 }
 
-/* canvas-aligner and canvas rules are for centering the canvas horizontally */
-#canvas-aligner {
-    width: 100%;
-    text-align: center;
+h2:hover {
+    text-decoration: underline;
 }
 
-canvas {
-    display: inline;
+/*
+I couldn't figure out how to get some space between the two inputs on medium and
+large displays with W3.CSS. This works but I don't know if it's allowed.
+You need to set id="inputContainer" on the div with w3-row in the form.
+@media (min-width:601px) {
+    #inputContainer .w3-half:first-child {
+        padding-right: 5px;
+    }
+
+    #inputContainer .w3-half:last-child {
+        padding-left: 5px;
+    }
 }
+*/
